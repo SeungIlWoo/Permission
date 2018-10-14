@@ -21,13 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
 public enum PermissionStatus: String {
     case authorized    = "Authorized"
     case denied        = "Denied"
     case disabled      = "Disabled"
     case notDetermined = "Not Determined"
-    
+
     internal init?(string: String?) {
         guard let string = string else { return nil }
         self.init(rawValue: string)

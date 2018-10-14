@@ -21,21 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
 #if PERMISSION_MICROPHONE
 import AVFoundation
 
 internal extension Permission {
     var statusMicrophone: PermissionStatus {
-        let status = AVAudioSession.sharedInstance().recordPermission()
-        
+        let status = AVAudioSession.sharedInstance().recordPermission
+
         switch status {
-        case AVAudioSessionRecordPermission.denied:  return .denied
-        case AVAudioSessionRecordPermission.granted: return .authorized
-        default:                                     return .notDetermined
+        case AVAudioSession.RecordPermission.denied:  return .denied
+        case AVAudioSession.RecordPermission.granted: return .authorized
+        default:                                      return .notDetermined
         }
     }
-    
+
     func requestMicrophone(_ callback: @escaping Callback) {
         AVAudioSession.sharedInstance().requestRecordPermission { _ in
             callback(self.statusMicrophone)
